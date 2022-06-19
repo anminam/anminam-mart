@@ -16,3 +16,7 @@ npx tailwindcss init -p
 ```
 Tailwind CSS IntelliSense
 ```
+
+# icon
+
+- https://heroicons.com/
