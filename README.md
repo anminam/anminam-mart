@@ -27,3 +27,56 @@ Tailwind CSS IntelliSense
 npm i prisma -D
 npx prisma init
 ```
+
+# PlanetScale
+
+- https://planetscale.com/
+
+```
+https://scoop.sh/
+```
+
+- install
+
+```
+scoop bucket add pscale https://github.com/planetscale/scoop-bucket.git
+scoop install pscale mysql
+
+```
+
+- update
+
+```
+scoop update pscale
+```
+
+```
+pscale region list
+```
+
+```
+ pscale database create anminam-mart --region ap-northeast
+```
+
+- DB 연결
+
+```
+pscale connect anminam-mart
+```
+
+- 외부키 정합성 '프리즈마' 한테 잡아달라고하기
+
+```
+  previewFeatures = ["referentialIntegrity"]
+
+```
+
+```
+npx prisma db push
+```
+
+- 현재 연결된 프리즈마 보기. 와우 와우 와우
+
+```
+npx prisma studio
+```
