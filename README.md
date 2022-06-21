@@ -80,3 +80,13 @@ npx prisma db push
 ```
 npx prisma studio
 ```
+
+```
+npm i @prisma/client
+// 백엔드에서 직접 client를 사용하기때문에 -D 가 안붙는다.
+
+```
+
+# React Hook Form
+
+- https://react-hook-form.com/
