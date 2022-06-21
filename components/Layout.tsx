@@ -18,6 +18,9 @@ export default function Layout({
   const onClick = () => {
     router.back();
   };
+  const navStyle = cls("flex flex-col items-center space-y-2");
+  const navItemSelectedStyle = cls("text-orange-500");
+
   return (
     <div>
       <div
@@ -51,29 +54,37 @@ export default function Layout({
         <nav className="bg-white px-10 text-gray-700 border-t fixed bottom-0 w-full pb-5 pt-3 flex justify-between text-xs">
           {/* 1 */}
           <Link href="/">
-            <a className="flex flex-col items-center space-y-2">
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                  />
-                </svg>
-              </div>
+            <a
+              className={cls(
+                navStyle,
+                cls(router.route === "/" ? navItemSelectedStyle : "")
+              )}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                />
+              </svg>
               <span>홈</span>
             </a>
           </Link>
           {/* 2 */}
           <Link href="/community">
-            <a className="flex flex-col items-center space-y-2">
+            <a
+              className={cls(
+                navStyle,
+                cls(router.route === "/community" ? navItemSelectedStyle : "")
+              )}
+            >
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +106,12 @@ export default function Layout({
           </Link>
           {/* 3 */}
           <Link href="/chats">
-            <a className="flex flex-col items-center space-y-2">
+            <a
+              className={cls(
+                navStyle,
+                cls(router.route === "/chats" ? navItemSelectedStyle : "")
+              )}
+            >
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +133,12 @@ export default function Layout({
           </Link>
           {/* 4 */}
           <Link href="/live">
-            <a className="flex flex-col items-center space-y-2">
+            <a
+              className={cls(
+                navStyle,
+                cls(router.route === "/live" ? navItemSelectedStyle : "")
+              )}
+            >
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +160,12 @@ export default function Layout({
           </Link>
           {/* 5 */}
           <Link href="/profile">
-            <a className="flex flex-col items-center space-y-2">
+            <a
+              className={cls(
+                navStyle,
+                cls(router.route === "/profile" ? navItemSelectedStyle : "")
+              )}
+            >
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

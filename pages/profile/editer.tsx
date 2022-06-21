@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Input from "../../components/input";
 
 const EditProfile: NextPage = () => {
   return (
@@ -21,34 +22,11 @@ const EditProfile: NextPage = () => {
       </div>
       {/*  */}
       <div className="space-y-1">
-        <label htmlFor="email" className="text-sm font-medium text-gray-700">
-          Emil Address
-        </label>
-        <div>
-          <input
-            id="email"
-            type="text"
-            className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-            required
-          ></input>
-        </div>
+        <Input label="Emil Address" name="email" kind="text" />
       </div>
       {/*  */}
       <div className="space-y-1">
-        <label htmlFor="email" className="text-sm font-medium text-gray-700">
-          Phone Number
-        </label>
-        <div className="flex rounded-md shadow-sm">
-          <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 select-none text-sm">
-            +82
-          </span>
-          <input
-            id="input"
-            type="number"
-            className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-            required
-          ></input>
-        </div>
+        <Input label="Phone Number" name="phone" kind="phone" />
       </div>
       {/*  */}
       <button className="mt-5 w-full bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 border border-transparent rounded-md shadow-md font-medium focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 focus:outline-none">

@@ -1,27 +1,12 @@
 import { NextPage } from "next";
+import Message from "../../components/message";
 
 const ChatDetail: NextPage = () => {
   return (
     <div className="py-10 px-4 space-y-4">
-      <div className="flex item-center space-x-2">
-        <div className="w-8 h-8 rounded-full bg-slate-400" />
-        <div className="flex items-center w-1/2 text-sm text-gray-700 p-2 border border-gray-300 rounded-md">
-          <p>Hi how much are you selling</p>
-        </div>
-      </div>
-      {/*  */}
-      <div className="flex flex-row-reverse item-center space-x-2 space-x-reverse">
-        <div className="w-8 h-8 rounded-full bg-slate-400" />
-        <div className="flex items-center w-1/2 text-sm text-gray-700 p-2 border border-gray-300 rounded-md">
-          <p>I Want $20,000</p>
-        </div>
-      </div>
-      <div className="flex item-center space-x-2">
-        <div className="w-8 h-8 rounded-full bg-slate-400" />
-        <div className="flex items-center w-1/2 text-sm text-gray-700 p-2 border border-gray-300 rounded-md">
-          <p>안돼에에에</p>
-        </div>
-      </div>
+      <Message text="Hi how much are you selling" />
+      <Message text="I Want $20,000" revers />
+      <Message text="안돼에에에" />
 
       {/*  */}
       <div className="fixed w-full mx-auto max-w-md bottom-0 inset-x-0">
