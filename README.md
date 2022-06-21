@@ -20,3 +20,10 @@ Tailwind CSS IntelliSense
 # icon
 
 - https://heroicons.com/
+
+# Prisma
+
+```
+npm i prisma -D
+npx prisma init
+```
