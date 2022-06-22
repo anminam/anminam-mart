@@ -1,11 +1,22 @@
+import type { UseFormRegisterReturn } from "react-hook-form";
+
 interface Props {
   label: string;
   name: string;
   kind?: "text" | "phone" | "price";
-  [key: string]: any;
+  register: UseFormRegisterReturn;
+  type: string;
+  required: boolean;
 }
 
-export default function Input({ label, name, kind, ...rest }: Props) {
+export default function Input({
+  label,
+  name,
+  kind = "text",
+  register,
+  type,
+  required,
+}: Props) {
   return (
     <div>
       <label
@@ -18,9 +29,10 @@ export default function Input({ label, name, kind, ...rest }: Props) {
         <div className="rounded-md shadow-sm relative flex items-center">
           <input
             id={name}
-            type="text"
+            {...register}
+            type={type}
             className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-            required
+            required={required}
           ></input>
         </div>
       ) : null}
@@ -31,10 +43,11 @@ export default function Input({ label, name, kind, ...rest }: Props) {
           </div>
           <input
             id={name}
-            {...rest}
+            {...register}
             className="appearance-none pl-7 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-            type="text"
+            type={type}
             placeholder="0.00"
+            required={required}
           ></input>
           <div className="absolute right-0 pointer-events-none pr-3  flex items-center ">
             <span className="text-gray-500">USD</span>
@@ -47,10 +60,11 @@ export default function Input({ label, name, kind, ...rest }: Props) {
             +82
           </span>
           <input
-            id="input"
-            type="number"
+            id={name}
+            {...register}
+            type={type}
+            required={required}
             className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-            required
           ></input>
         </div>
       ) : null}
