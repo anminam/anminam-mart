@@ -1,71 +1,58 @@
-import React, { useState } from "react";
+import { appendErrors, FieldErrors, useForm } from "react-hook-form";
 
+interface LoginForm {
+  username: string;
+  password: string;
+  email: string;
+}
 export default function Forms() {
-  const [userName, setUserName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [formErrors, setFormErrors] = useState("");
-  const [emailError, setEmailError] = useState("");
-
-  const onUserNameChanged = (event: React.SyntheticEvent<HTMLInputElement>) => {
-    const {
-      currentTarget: { value },
-    } = event;
-
-    setUserName(value);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginForm>({
+    defaultValues: {
+      email: "M",
+    },
+    mode: "onChange",
+  });
+  const onValid = (data: LoginForm) => {
+    console.log("valid");
   };
-  const onEmailChanged = (event: React.SyntheticEvent<HTMLInputElement>) => {
-    const {
-      currentTarget: { value },
-    } = event;
-    setEmailError("");
-    setEmail(value);
-  };
-  const onPasswordChanged = (event: React.SyntheticEvent<HTMLInputElement>) => {
-    const {
-      currentTarget: { value },
-    } = event;
-
-    setPassword(value);
-  };
-
-  console.log(userName, email, password);
-
-  const onSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (userName === "" || email === "" || password === "") {
-      setFormErrors("All fileds are require");
-    }
-    if (!email.includes("@")) {
-      setEmailError("email is required");
-    }
-    console.log(email, userName, password);
+  const onInvalid = (errors: FieldErrors) => {
+    console.log(errors);
   };
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit(onValid, onInvalid)}>
       <input
-        value={userName}
-        onChange={onUserNameChanged}
+        {...register("username", {
+          required: "유저이름 적어라",
+          minLength: {
+            message: "다섯글자 이상적으셈",
+            value: 5,
+          },
+        })}
         type="text"
         placeholder="Username"
-        // required
-        // minLength={5}
       />
       <input
-        value={email}
-        onChange={onEmailChanged}
+        {...register("email", {
+          required: "이메일적어라",
+          validate: {
+            notGmail: (value) => !value.includes("@gmail.com") || "지멜 안됨",
+          },
+        })}
         type="email"
         placeholder="Email"
-        // required
+        className={`outline-none ${
+          Boolean(errors.email?.message) ? "border-red-500" : ""
+        }`}
       />
-      {emailError}
+      {errors.email?.message}
       <input
-        value={password}
-        onChange={onPasswordChanged}
+        {...register("password", { required: "비밀번호적어라" })}
         type="password"
         placeholder="Password"
-        // required
       />
       <input type="submit" value="create Account" />
     </form>
