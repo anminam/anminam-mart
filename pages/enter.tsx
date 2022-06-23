@@ -24,8 +24,12 @@ export default function Enter() {
   };
 
   const onValid = (data: EnterForm) => {
-    console.log(data);
+    fetch("/api/users/enter", {
+      method: "POST",
+      body: JSON.stringify(data),
+    });
   };
+
   return (
     <div className="mt-16 px-4">
       <h3 className="text-3xl font-bold text-center">Enter to Mart</h3>
