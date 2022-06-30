@@ -23,6 +23,9 @@ Tailwind CSS IntelliSense
 
 # Prisma
 
+- https://www.prisma.io/
+- Prisma extension 설치
+
 ```
 npm i prisma -D
 npx prisma init
