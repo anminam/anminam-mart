@@ -1,4 +1,4 @@
-import type { UseFormRegisterReturn } from "react-hook-form";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 interface Props {
   label: string;
@@ -11,11 +11,10 @@ interface Props {
 
 export default function Input({
   label,
+  type,
   name,
   kind = "text",
   register,
-  type,
-  required,
 }: Props) {
   return (
     <div>
@@ -32,7 +31,6 @@ export default function Input({
             {...register}
             type={type}
             className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-            required={required}
           ></input>
         </div>
       ) : null}
@@ -44,10 +42,9 @@ export default function Input({
           <input
             id={name}
             {...register}
-            className="appearance-none pl-7 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
             type={type}
+            className="appearance-none pl-7 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
             placeholder="0.00"
-            required={required}
           ></input>
           <div className="absolute right-0 pointer-events-none pr-3  flex items-center ">
             <span className="text-gray-500">USD</span>
@@ -63,7 +60,6 @@ export default function Input({
             id={name}
             {...register}
             type={type}
-            required={required}
             className="appearance-none w-full px-3 py-2 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
           ></input>
         </div>
