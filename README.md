@@ -53,6 +53,12 @@ scoop install pscale mysql
 scoop update pscale
 ```
 
+-login
+
+```
+pscale login
+```
+
 ```
 pscale region list
 ```
