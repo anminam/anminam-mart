@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Input from "../../components/input";
+import Input from "@components/input";
 
 const EditProfile: NextPage = () => {
   return (

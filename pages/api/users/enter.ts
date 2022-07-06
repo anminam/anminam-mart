@@ -1,9 +1,10 @@
+import client from "@libs/client";
+import withHandler from "@libs/server/withHandler";
 import { NextApiRequest, NextApiResponse } from "next";
-import client from "../../../libs/client";
-import withHandler from "../../../libs/server/withHandler";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   console.log(req.body);
+  client;
   return res.status(200).end();
 }
 

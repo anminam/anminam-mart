@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Message from "../../components/message";
+import Message from "@components/message";
 
 const ChatDetail: NextPage = () => {
   return (
