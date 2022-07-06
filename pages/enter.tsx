@@ -1,7 +1,9 @@
+import { NextPage } from "next";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import Button from "../components/button";
 import Input from "../components/input";
+import useMutation from "../libs/client/useMutation";
 
 function cls(...className: string[]) {
   return className.join(" ");
@@ -10,7 +12,9 @@ interface EnterForm {
   email?: string;
   phone?: string;
 }
-export default function Enter() {
+const Enter: NextPage = () => {
+  const [enter, { loading, data, error }] = useMutation("api/users/enter");
+  const [subMitting, setSubMitting] = useState(false);
   const { register, handleSubmit, reset } = useForm<EnterForm>();
   const [method, setMethod] = useState<"email" | "phone">("email");
   const onEmailClick = () => {
@@ -21,9 +25,9 @@ export default function Enter() {
     reset();
     setMethod("phone");
   };
-
-  const onValid = (data: EnterForm) => {
-    console.log(data);
+  console.log(loading, data, error);
+  const onValid = (validForm: EnterForm) => {
+    enter(validForm);
   };
   return (
     <div className="mt-16 px-4">
@@ -79,10 +83,10 @@ export default function Enter() {
             ) : null}
           </div>
           {/* <Button text></Button> */}
-          <button className="mt-6 bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 border border-transparent rounded-md shadow-md font-medium focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 focus:outline-none">
-            {method === "email" ? "이메일로 가즈아" : null}
-            {method === "phone" ? "폰으로 가즈아" : null}
-          </button>
+          {method === "email" ? <Button text="이메일로 가즈아" /> : null}
+          {method === "phone" ? (
+            <Button text={subMitting ? "Loading" : "폰으로 가즈아"} />
+          ) : null}
         </form>
         <div className="mt-8">
           <div className="relative">
@@ -124,4 +128,6 @@ export default function Enter() {
       </div>
     </div>
   );
-}
+};
+
+export default Enter;
