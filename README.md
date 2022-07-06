@@ -80,6 +80,8 @@ pscale connect anminam-mart
 
 ```
 
+- 스키마 올리기
+
 ```
 npx prisma db push
 ```
